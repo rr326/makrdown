@@ -22,7 +22,7 @@ module.exports = function (grunt) {
         },
         watch: {
             md: {
-                files: ['*.md', 'md_template.html'],
+                files: ['**/*.md', 'md_template.html'],
                 tasks: ['markdown'],
                 options: {
                     spawn: false,
@@ -48,6 +48,9 @@ module.exports = function (grunt) {
                 }
             }
         },
+        clean: {
+            md: ['.tmp/mdcompiled']
+        }
 
 
     });
@@ -57,6 +60,7 @@ module.exports = function (grunt) {
 
 
         grunt.task.run([
+            'clean:md',
             'markdown', // Initialize
             'connect:md',
             'watch:md'
