@@ -6,20 +6,23 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         markdown: {
+            options: {
+                template: 'md_template.html'
+            },
             all: {
                 files: [
                     {
                         expand: true,
                         src: ['*.md'],
                         dest: '.tmp/mdcompiled',
-                        ext: '.html'
+                        ext: '.html',
                     }
                 ]
             }
         },
         watch: {
             md: {
-                files: ['*.md'],
+                files: ['*.md', 'md_template.html'],
                 tasks: ['markdown'],
                 options: {
                     spawn: false,
